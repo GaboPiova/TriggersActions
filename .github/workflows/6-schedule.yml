@@ -2,9 +2,8 @@ name: 6. Workflow con schedule
 
 on:
   schedule:
-    # Se ejecuta cada hora (a los 0 minutos de cada hora)
-    # Nota: GitHub no permite intervalos menores a 5 minutos por rendimiento
     - cron: '*/5 * * * *'
+  workflow_dispatch: # 💡 AGREGA ESTO ACÁ ABAJO
 
 jobs:
   ejecutar:
