@@ -1,2 +1,3 @@
 [2026-06-03 15:00:32] TRIGGER: pull_request - Pull request detectado hacia main.
 [2026-06-03 15:02:03] TRIGGER: push - Workflow activado por push en main.
+[2026-06-03 15:13:38] TRIGGER: issues - Nuevo issue creado por un usuario.
