@@ -22,7 +22,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Ejecutar acción simple
-        run: echo "Nivel de alerta seleccionado: ${{ github.event.inputs.nivel_alerta }}"
+        run: |
+          echo "[$(date +'%Y-%m-%d %H:%M:%S')] TRIGGER: workflow_dispatch - Ejecución manual. Nivel: ${{ github.event.inputs.nivel_alerta }}" >> eventos.log
 
       - name: Registrar en LOG
         run: |
