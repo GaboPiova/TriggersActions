@@ -2,3 +2,4 @@
 [2026-06-03 15:02:03] TRIGGER: push - Workflow activado por push en main.
 [2026-06-03 15:13:38] TRIGGER: issues - Nuevo issue creado por un usuario.
 [2026-06-03 15:17:24] TRIGGER: issue_comment - Comentario en PR detectado.
+[2026-06-03 15:25:19] TRIGGER: push - Workflow activado por push en main.
