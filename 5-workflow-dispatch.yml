@@ -1,0 +1,34 @@
+name: 5. Workflow con workflow_dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      nivel_alerta:
+        description: 'Selecciona el nivel de alerta'
+        required: true
+        default: 'INFO'
+        type: choice
+        options:
+          - INFO
+          - WARNING
+          - CRITICAL
+
+jobs:
+  ejecutar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Ejecutar acción simple
+        run: echo "Nivel de alerta seleccionado: ${{ github.event.inputs.nivel_alerta }}"
+
+      - name: Registrar en LOG
+        run: |
+          echo "[$(date +'%Y-%m-%d %H:%M:%S')] TRIGGER: workflow_dispatch - Ejecución manual. Nivel: ${{ github.event.inputs.nivel_alerta }}" >> eventos.log
+
+      - name: Guardar cambios en el LOG
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: actualizar eventos.log por evento manual"
+        

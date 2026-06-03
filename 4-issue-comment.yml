@@ -1,0 +1,26 @@
+name: 4. Workflow con issue_comment
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  ejecutar:
+    # Este if filtra para que SOLO corra si el comentario pertenece a un Pull Request
+    if: ${{ github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Ejecutar acción simple
+        run: echo "Comentario en PR detectado"
+
+      - name: Registrar en LOG
+        run: |
+          echo "[$(date +'%Y-%m-%d %H:%M:%S')] TRIGGER: issue_comment - Comentario en PR detectado." >> eventos.log
+
+      - name: Guardar cambios en el LOG
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: actualizar eventos.log por evento issue_comment"

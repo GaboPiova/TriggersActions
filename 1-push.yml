@@ -1,0 +1,25 @@
+name: 1. Workflow con push
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  ejecutar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Ejecutar acción simple
+        run: echo "Workflow activado por push"
+
+      - name: Registrar en LOG
+        run: |
+          echo "[$(date +'%Y-%m-%d %H:%M:%S')] TRIGGER: push - Workflow activado por push en main." >> eventos.log
+
+      - name: Guardar cambios en el LOG
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: actualizar eventos.log por evento push"
+          

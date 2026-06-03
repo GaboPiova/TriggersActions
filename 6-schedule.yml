@@ -1,0 +1,27 @@
+name: 6. Workflow con schedule
+
+on:
+  schedule:
+    # Se ejecuta cada hora (a los 0 minutos de cada hora)
+    # Nota: GitHub no permite intervalos menores a 5 minutos por rendimiento
+    - cron: '0 * * * *'
+
+jobs:
+  ejecutar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Ejecutar acción simple
+        run: echo "Ejecución programada"
+
+      - name: Registrar en LOG
+        run: |
+          echo "[$(date +'%Y-%m-%d %H:%M:%S')] TRIGGER: schedule - Ejecución cron programada." >> eventos.log
+
+      - name: Guardar cambios en el LOG
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: actualizar eventos.log por evento programado"
+          

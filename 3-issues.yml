@@ -1,0 +1,24 @@
+name: 3. Workflow con issues
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  ejecutar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Ejecutar acción simple
+        run: echo "Nuevo issue creado"
+
+      - name: Registrar en LOG
+        run: |
+          echo "[$(date +'%Y-%m-%d %H:%M:%S')] TRIGGER: issues - Nuevo issue creado por un usuario." >> eventos.log
+
+      - name: Guardar cambios en el LOG
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: actualizar eventos.log por evento issues"
