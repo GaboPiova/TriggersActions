@@ -43,3 +43,6 @@ Como característica de valor agregado, cada flujo de trabajo tiene un paso fina
 [Ejemplo del contenido de tu archivo eventos.log]
 [2026-06-03 12:00:00] TRIGGER: push - Workflow activado por push en main.
 [2026-06-03 12:05:22] TRIGGER: workflow_dispatch - Ejecución manual. Nivel: CRITICAL.
+
+
+Haciendo un cambio para probar luego un push
