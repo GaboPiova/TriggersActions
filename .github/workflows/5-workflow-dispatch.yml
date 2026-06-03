@@ -8,6 +8,7 @@ on:
         required: true
         default: 'INFO'
         type: choice
+        # 💡 DEJA ESTA SECCIÓN ASÍ EN VERTICAL:
         options:
           - INFO
           - WARNING
@@ -31,4 +32,3 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: actualizar eventos.log por evento manual"
-        
